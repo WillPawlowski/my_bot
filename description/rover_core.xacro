@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="inertial_macros.xacro"/>
+
+    <material name = "white">
+        <color rgba= "1 1 1 1" />
+    </material>
+
+    <material name = "black">
+        <color rgba= "0 0 0 1" />
+    </material> 
+
+    <material name = "blue">
+        <color rgba= ".2 .2 1 1" />
+    </material> 
+
+    <link name="base_link"></link>
+
+    <!-- BASE_FOOTPRINT LINK -->
+
+    <!-- Assuming zed movement is negligable -->
+
+    <joint name="base_footprint_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="base_footprint"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="base_footprint">
+    </link>
+
+    <!-- CHASSIS LINK -->
+
+    <joint name="chassis_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="chassis"/>
+        <origin xyz="-0.1 0 0"/>
+    </joint>
+
+    <link name="chassis">
+        <visual>
+            <origin xyz=".5 0 .25"/>
+            <geometry>
+                <box size=".75 .6 0.5"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <origin xyz=".5 0 .25"/>
+            <geometry>
+                <box size=".75 .6 0.5"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="42" x="1" y="1" z=".5">
+            <origin xyz=".5 0 .25" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <gazebo reference="chassis">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <!-- LEFT DRIVE WHEEL 1 LINK -->
+
+    <joint name="left_drive_wheel_1_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_drive_wheel_1_train"/>
+        <origin xyz=".15 -.3 0" rpy="${pi/2} 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="left_drive_wheel_1_train">
+        <visual>
+            <geometry>
+                <cylinder radius=".15" length=".2"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius=".15" length=".2"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="3" length=".2" radius=".15">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <gazebo reference="left_drive_wheel_1_train">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <!-- LEFT DRIVE WHEEL 2 LINK -->
+
+    <!--joint name="left_drive_wheel_2_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_drive_wheel_2_train"/>
+        <origin xyz=".35 -.5 0" rpy="${pi/2} 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="left_drive_wheel_2_train">
+        <visual>
+            <geometry>
+                <cylinder radius=".15" length=".2"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius=".15" length=".2"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="3" length=".2" radius=".15">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+     <gazebo reference="left_drive_wheel_2_train">
+        <material>Gazebo/Black</material>
+    </gazebo-->
+
+    <!-- LEFT DRIVE WHEEL 3 LINK -->
+
+    <joint name="left_drive_wheel_3_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_drive_wheel_3_train"/>
+        <origin xyz=".6 -.3 0" rpy="${pi/2} 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="left_drive_wheel_3_train">
+        <visual>
+            <geometry>
+                <cylinder radius=".15" length=".2"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius=".15" length=".2"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="3" length=".2" radius=".15">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <gazebo reference="left_drive_wheel_3_train">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <!-- RIGHT DRIVE WHEEL 1 LINK -->
+
+    <joint name="right_drive_wheel_1_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_drive_wheel_1_train"/>
+        <origin xyz=".15 .3 0" rpy="-${pi/2} 0 0"/>
+        <axis xyz="0 0 -1"/>
+    </joint>
+
+    <link name="right_drive_wheel_1_train">
+        <visual>
+            <geometry>
+                <cylinder radius=".15" length=".2"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius=".15" length=".2"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="3" length=".2" radius=".15">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <gazebo reference="right_drive_wheel_1_train">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <!-- RIGHT DRIVE WHEEL 2 LINK -->
+
+    <!--joint name="right_drive_wheel_2_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_drive_wheel_2_train"/>
+        <origin xyz=".35 .5 0" rpy="-${pi/2} 0 0"/>
+        <axis xyz="0 0 -1"/>
+    </joint>
+
+    <link name="right_drive_wheel_2_train">
+        <visual>
+            <geometry>
+                <cylinder radius=".15" length=".2"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius=".15" length=".2"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="3" length=".2" radius=".15">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <gazebo reference="right_drive_wheel_2_train">
+        <material>Gazebo/Black</material>
+    </gazebo-->
+
+    <!-- RIGHT DRIVE WHEEL 3 LINK -->
+
+    <joint name="right_drive_wheel_3_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_drive_wheel_3_train"/>
+        <origin xyz=".6 .3 0" rpy="-${pi/2} 0 0"/>
+        <axis xyz="0 0 -1"/>
+    </joint>
+
+    <link name="right_drive_wheel_3_train">
+        <visual>
+            <geometry>
+                <cylinder radius=".15" length=".2"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius=".15" length=".2"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="3" length=".2" radius=".15">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <gazebo reference="right_drive_wheel_3_train">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+</robot>

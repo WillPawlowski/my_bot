@@ -1,0 +1,10 @@
+<launch>
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find my_bot)/description/robot.urdf.xacro'"/>
+  
+  <param name="/use_sim_time" value="false"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type='robot_state_publisher' output ="screen">
+   
+  </node>
+</launch>

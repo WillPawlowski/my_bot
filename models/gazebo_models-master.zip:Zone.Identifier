@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://github.com/osrf/gazebo_models/tree/master
+HostUrl=https://codeload.github.com/osrf/gazebo_models/zip/refs/heads/master
