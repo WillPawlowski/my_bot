@@ -1,7 +1,17 @@
 ## Robot Package Template
 
-This is a GitHub template. You can make your own copy by clicking the green "Use this template" button.
+Packages needed:
+	joint_state_publisher_gui
+	slam_toolbox
+	rplidar_ros
+	gazebo
+	
+Spawning robot in gazebo: roslaunch my_bot spawn.launch
 
-It is recommended that you keep the repo/package name the same, but if you do change it, ensure you do a "Find all" using your IDE (or the built-in GitHub IDE by hitting the `.` key) and rename all instances of `my_bot` to whatever your project's name is.
+Launching Joint State Publisher: rosrun joint_state_publisher_gui joint_state_publisher_gui
+Launching a world file: gazebo /home/william/catkin_ws/src/my_bot/worlds/tracked_vehicle_simple.world
+	Maybe: roslaunch gazebo_ros empty_world.launch
 
-Note that each directory currently has at least one file in it to ensure that git tracks the files (and, consequently, that a fresh clone has direcctories present for CMake to find). These example files can be removed if required (and the directories can be removed if `CMakeLists.txt` is adjusted accordingly).
+Keyboard Control:  rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+
+Slam: roslaunch slam_toolbox online_async.launch params_file:=/home/william/catkin_ws/src/my_bot/config/mapper_params_online_async.yaml
