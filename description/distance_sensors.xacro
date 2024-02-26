@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+    <!-- LEFT DISTANCE SENSOR-->
+
+   <joint name="distance_sensor_left_joint" type="fixed">
+        <parent link="chassis"/>
+        <child link="distance_sensor_left"/>
+        <origin xyz=".9 -.3 .5" rpy="0 0.20943632679 0"/>
+    </joint>
+
+    <link name="distance_sensor_left">
+        <visual>
+            <geometry>
+                <box size=".1 .05 0.05"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size=".05 .05 0.50"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass=".1" x=".1" y=".05" z=".05">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link> 
+
+    <gazebo reference="distance_sensor_left">
+        <material>Gazebo/Blue</material>
+
+        <sensor name="left_distance_sensor" type="gpu_ray">
+            <pose> 0 0 0 0 0 0 </pose>
+            <visualize>true</visualize>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>25</samples>
+                        <min_angle>-0.139626</min_angle>
+                        <max_angle>0.139626</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.1</min>
+                    <max>5</max>
+                </range>
+            </ray>
+            <plugin name="gazebo_distance_sensor_left" filename="libgazebo_ros_gpu_laser.so">
+                <topicName>/singleScan</topicName>
+                <frameName>distance_sensor_left</frameName>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+    <!-- RIGHT DISTANCE SENSOR-->
+
+   <joint name="distance_sensor_right_joint" type="fixed">
+        <parent link="chassis"/>
+        <child link="distance_sensor_right"/>
+        <origin xyz=".9 .3 .5" rpy="0 0.20943632679 0"/>
+    </joint>
+
+    <link name="distance_sensor_right">
+        <visual>
+            <geometry>
+                <box size=".1 .05 0.05"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size=".05 .05 0.50"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass=".1" x=".1" y=".05" z=".05">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link> 
+
+    <gazebo reference="distance_sensor_right">
+        <material>Gazebo/Blue</material>
+
+        <sensor name="right_distance_sensor" type="gpu_ray">
+            <pose> 0 0 0 0 0 0 </pose>
+            <visualize>true</visualize>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>25</samples>
+                        <min_angle>-0.139626</min_angle>
+                        <max_angle>0.139626</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.1</min>
+                    <max>5</max>
+                </range>
+            </ray>
+            <plugin name="gazebo_distance_sensor_right" filename="libgazebo_ros_gpu_laser.so">
+                <topicName>/singleScan</topicName>
+                <frameName>distance_sensor_right</frameName>
+            </plugin>
+        </sensor>
+    </gazebo>
+</robot>
