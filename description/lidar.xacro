@@ -12,7 +12,7 @@
             <geometry>
                 <cylinder radius="0.05" length="0.04"/>
             </geometry>
-            <material name="red"/>
+            <material name="blue"/>
         </visual>
         <collision>
             <geometry>
@@ -24,12 +24,10 @@
         </xacro:inertial_cylinder>
     </link>
 
-
-
     <gazebo reference="laser_frame">
-        <material>Gazebo/Red</material>
+        <material>Gazebo/Blue</material>
 
-        <sensor name="laser" type="gpu_ray">
+        <sensor name="lidar" type="gpu_ray">
             <pose> 0 0 0 0 0 0 </pose>
             <visualize>true</visualize>
             <update_rate>10</update_rate>
@@ -46,11 +44,13 @@
                     <max>10</max>
                 </range>
             </ray>
-            <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
-                <topicName>/scan</topicName>
+            <plugin name="gazebo_lidar" filename="libgazebo_ros_gpu_laser.so">
+                <topicName>/lidar_scan</topicName>
                 <frameName>laser_frame</frameName>
             </plugin>
         </sensor>
     </gazebo>
+
+    
 
 </robot>

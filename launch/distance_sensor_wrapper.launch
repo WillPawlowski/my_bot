@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<launch>
+    <include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch"/>
+    
+    <!-- run pointcloud_to_laserscan node -->
+    <node name="distance_sens_wrapper" pkg="my_bot" type="distance_sens_wrapper" output="screen" >
+        <param name="left_destination_frame" value="distance_sensor_left"/>
+        <param name="right_destination_frame" value="distance_sensor_right"/>
+        <param name="left_destination_topic" value="/new_left_scan"/>
+        <param name="right_destination_topic" value="/new_right_scan"/>
+        <param name="angle_min" value="-0.139626"/>
+        <param name="angle_max" value="0.139626"/>
+        <param name="angle_increment" value="0.0116355"/>
+        <param name="scan_time" value="0.1"/>
+        <param name="range_min" value="0.15"/>
+        <param name="range_max" value="10.0"/>
+        <param name="detection_threshold" value="3.0"/>
+    </node>
+
+</launch>

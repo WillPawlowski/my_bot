@@ -18,6 +18,7 @@ endif()
 # find dependencies
 find_package(catkin REQUIRED)
 find_package(catkin REQUIRED COMPONENTS roslaunch)
+find_package(catkin REQUIRED COMPONENTS roscpp sensor_msgs std_msgs)
 roslaunch_add_file_check(launch)
 # uncomment the following section in order to fill in
 # further dependencies manually.
@@ -34,9 +35,23 @@ if(BUILD_TESTING)
   catkint_lint_auto_find_test_dependencies()
 endif()
 
-install(
-  DIRECTORY config description launch worlds
-  DESTINATION share/${PROJECT_NAME}
+#add_dependencies(distance_sens_wrapper ${PROJECT_NAME}_gencfg)
+
+catkin_package(
+  INCLUDE_DIRS
 )
 
-catkin_package()
+include_directories(include
+  ${catkin_INCLUDE_DIRS}
+)
+
+add_executable(distance_sens_wrapper src/distance_sens_wrapper.cpp)
+target_link_libraries(distance_sens_wrapper ${catkin_LIBRARIES})
+
+install(TARGETS distance_sens_wrapper
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  #DIRECTORY config description launch worlds
+  #DESTINATION share/${PROJECT_NAME}
+)
