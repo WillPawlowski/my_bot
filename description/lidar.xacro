@@ -45,7 +45,7 @@
                 </range>
             </ray>
             <plugin name="gazebo_lidar" filename="libgazebo_ros_gpu_laser.so">
-                <topicName>/scan</topicName>
+                <topicName>/lidar_scan</topicName>
                 <frameName>laser_frame</frameName>
             </plugin>
         </sensor>

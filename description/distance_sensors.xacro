@@ -47,7 +47,7 @@
                 </range>
             </ray>
             <plugin name="gazebo_distance_sensor_left" filename="libgazebo_ros_gpu_laser.so">
-                <topicName>/singleScan</topicName>
+                <topicName>/distance_left_scan</topicName>
                 <frameName>distance_sensor_left</frameName>
             </plugin>
         </sensor>
@@ -99,7 +99,7 @@
                 </range>
             </ray>
             <plugin name="gazebo_distance_sensor_right" filename="libgazebo_ros_gpu_laser.so">
-                <topicName>/singleScan</topicName>
+                <topicName>/distance_right_scan</topicName>
                 <frameName>distance_sensor_right</frameName>
             </plugin>
         </sensor>
