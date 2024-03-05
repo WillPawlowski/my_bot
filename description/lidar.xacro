@@ -1,10 +1,37 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
-    <joint name="laser_joint" type="fixed">
+    <joint name="laser_arm_joint" type="fixed">
         <parent link="chassis"/>
-        <child link="laser_frame"/>
+        <child link="laser_arm"/>
         <origin xyz=".90 0 0.25" rpy="0 0 0"/>
+    </joint>
+
+    <link name="laser_arm">
+        <visual>
+            <geometry>
+                <box size=".2 .2 0.1"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size=".2 .2 0.1"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="2" x=".2" y=".2" z=".1">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <gazebo reference="laser_arm">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <joint name="laser_joint" type="fixed">
+        <parent link="laser_arm"/>
+        <child link="laser_frame"/>
+        <origin xyz=".05 0 -.07" rpy="0 0 0"/>
     </joint>
 
     <link name="laser_frame">
