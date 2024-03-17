@@ -2,57 +2,34 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <gazebo>
-        <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
-            <updateRate>100.0</updateRate>
-            <robotNamespace>/</robotNamespace>
-            <leftFrontJoint>left_drive_wheel_3_joint</leftFrontJoint>
-            <rightFrontJoint>right_drive_wheel_3_joint</rightFrontJoint>
-            <leftRearJoint>left_drive_wheel_1_joint</leftRearJoint>
-            <rightRearJoint>right_drive_wheel_1_joint</rightRearJoint>
-            <wheelSeparation>1.0</wheelSeparation>
-            <wheelDiameter>0.3</wheelDiameter>
-            
-            <torque>200</torque>
-            <wheelAcceleration>10.0</wheelAcceleration>
-            
-            <commandTopic>cmd_vel</commandTopic>
-            <odometryTopic>odom</odometryTopic>
 
-            <robotBaseFrame>base_link</robotBaseFrame>
-
-            <odometryFrame>odom</odometryFrame>
-
-            <covariance_x>0.0001</covariance_x>
-            <covariance_y>0.0001</covariance_y>
-            <covariance_yaw>0.01</covariance_yaw>
-            <!--publish_odom>true</publish_odom>
-            <publishOdomTF>true</publishOdomTF-->
-            <publishWheelTF>true</publishWheelTF>
-            <broadcastTF>true</broadcastTF>
-        </plugin>
-
-        <!--plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
-            <leftJoint>left_drive_wheel_3_joint</leftJoint>
-            <rightJoint>right_drive_wheel_3_joint</rightJoint>
-            <wheelSeparation>1.0</wheelSeparation>
-            <wheelDiameter>0.3</wheelDiameter>
+        <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+            <leftJoint>right_drive_wheel_1_joint</leftJoint>
+            <rightJoint>left_drive_wheel_1_joint</rightJoint>
+            <wheelSeparation>.5</wheelSeparation>
+            <wheelDiameter>0.2</wheelDiameter>
 
 
             <wheelTorque>200</wheelTorque>
             <wheelAcceleration>10.0</wheelAcceleration>
+            <updateRate>100.0</updateRate>
 
             <commandTopic>cmd_vel</commandTopic>
 
             <odometryTopic>odom</odometryTopic>
+            <odometryFrame>odom</odometryFrame>
+            <odometrySource>1</odometrySource>
             <robotBaseFrame>base_link</robotBaseFrame>
 
             <publish_odom>true</publish_odom>
             <publishOdomTF>true</publishOdomTF>
             <publishWheelTF>true</publishWheelTF>
+            <publishTf>1</publishTf>
+            <publishWheelJointState>true</publishWheelJointState>
 
             <rosDebugLevel>na</rosDebugLevel>
 
-        </plugin-->
+        </plugin>
         
     </gazebo>
 

@@ -6,7 +6,7 @@
    <joint name="distance_sensor_left_joint" type="fixed">
         <parent link="chassis"/>
         <child link="distance_sensor_left"/>
-        <origin xyz=".9 -.3 .5" rpy="0 0.20943632679 0"/>
+        <origin xyz=".85 -.25 .37" rpy="0 0.20943632679 0"/>
     </joint>
 
     <link name="distance_sensor_left">
@@ -58,7 +58,7 @@
    <joint name="distance_sensor_right_joint" type="fixed">
         <parent link="chassis"/>
         <child link="distance_sensor_right"/>
-        <origin xyz=".9 .3 .5" rpy="0 0.20943632679 0"/>
+        <origin xyz=".85 .25 .37" rpy="0 0.20943632679 0"/>
     </joint>
 
     <link name="distance_sensor_right">

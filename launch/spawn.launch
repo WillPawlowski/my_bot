@@ -6,7 +6,7 @@
     <arg name="debug" default="false" />
     <arg name="gui" default="true" />
     <arg name="pause" default="false" />
-    <arg name="world" default="$(find my_bot)/worlds/arena.world" />
+    <arg name="world" default="$(find my_bot)/worlds/newArena.world" />
 
 
     <!-- Launch Gazebo -->
@@ -19,8 +19,8 @@
     </include>    
 
     <!-- Spawn Robot -->
-    <arg name="x" default="1"/>
-    <arg name="y" default="1"/>
+    <arg name="x" default=".25"/>
+    <arg name="y" default=".25"/>
     <arg name="z" default="0"/>
 
     <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"

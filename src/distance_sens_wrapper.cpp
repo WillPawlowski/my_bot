@@ -84,7 +84,7 @@ void DistanceWrapper::scan_callback(const sensor_msgs::LaserScan::ConstPtr &scan
 
 	//Determine if distance sensor is detecting a crator or level ground
 	double fill_val = output->range_max;
-	if(scan->ranges[midpoint] < detection_threshold)	//TODO: FLIP THIS TO GREATER THAN FOR ACTUAL ROBOT
+	if(scan->ranges[midpoint] < detection_threshold && scan->ranges[midpoint] > 1.5)	//TODO: FLIP THIS TO GREATER THAN FOR ACTUAL ROBOT
 	{
 		fill_val = scan->ranges[midpoint];
 	}
